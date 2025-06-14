@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/hooks/useAuth";
-import { Home, Compass, TrendingUp, Play, Mic, User } from "lucide-react";
+import { Home, Compass, TrendingUp, Play, Mic, User, LogOut, Settings } from "lucide-react";
 import { Link, useLocation } from "wouter";
 
 export default function Sidebar() {
@@ -89,10 +89,31 @@ export default function Sidebar() {
         </Card>
 
         {/* Chirp Button */}
-        <Button className="w-full bg-saffron-gradient text-white font-semibold py-3 rounded-full hover:scale-105 transition-transform floating-btn">
+        <Button className="w-full bg-saffron-gradient text-white font-semibold py-3 rounded-full hover:scale-105 transition-transform floating-btn mb-4">
           <i className="fas fa-plus mr-2"></i>
           New Chirp
         </Button>
+
+        {/* Settings and Logout */}
+        <Card className="glassmorphic rounded-2xl p-4 border-0">
+          <div className="space-y-2">
+            <Button
+              variant="ghost"
+              className="w-full justify-start space-x-3 hover:bg-white/20 dark:hover:bg-white/10"
+            >
+              <Settings className="w-5 h-5" />
+              <span>Settings</span>
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => window.location.href = "/api/logout"}
+              className="w-full justify-start space-x-3 hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 hover:text-red-700"
+            >
+              <LogOut className="w-5 h-5" />
+              <span>Logout</span>
+            </Button>
+          </div>
+        </Card>
       </div>
     </aside>
   );
